@@ -1,0 +1,74 @@
+
+
+.fondo{
+    background-image: url("/img/fondo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.rojo{
+    background-color:#F30E4BD1 ;
+
+}
+.boton{
+    background-color: #96042D;
+    color: white;
+}
+
+.palido{
+    background-color: #E9839E;
+}
+
+
+.encabezado{
+    
+    padding-top: 10vh;
+}
+
+.white{
+    color:white;
+}
+
+.fuente{
+    font-family: Russo One;
+    font-weight:bold;
+    color: #ffff;
+    font-size: 8vw;
+}
+
+.fuente-chica{
+    font-size: 80%;
+    font-weight: bold;
+}
+
+.resultado{
+    border-radius: 20px;
+    background-color: #79112E;
+    color: white;
+    padding: 15px;
+}
+
+.letra-resultado{
+    font-size:x-large;
+}
+
+.letra-resumen{
+    font-size:medium;   
+}
+
+@media screen and (max-width: 700px){
+    .imagen-nota{
+        width: 100%;
+        height: 200px;
+    }
+}
+
+@media screen and (min-width: 701px){
+    .imagen-nota{
+        width: 75%;
+        height: 400px;
+    }
+}
+
