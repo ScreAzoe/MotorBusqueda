@@ -38,14 +38,14 @@
             </div>
                 <!-- Formulario de Búsqueda-->
                 <div class="row">
-                <form  name="formularioMotor">
+                <form id="formulario">
                             <div class="row">
                                 <div class="col-md-8 col-12  offset-md-1">
                                     <input class="form-control  palido" type="search" name="consulta" placeholder="Realiza tu consulta">
                                 </div>
                                 
                                 <div class="col-md-2 col-12 ">
-                                    <button class="btn btn-lg boton" type="submit" for="formularioMotor">Buscar</button>
+                                    <button onclick="enviarDatos()" name="buscar" class="btn btn-lg boton" type="button" for="formularioMotor">Buscar</button>
                                 </div>
                             </div>
                     <div class="form-group row fuente-chica align-items-center">
@@ -66,92 +66,14 @@
         <br> <br>
 
         <!--Resultados -->
-        <div class="container resultado">
-            <div class="row  justify-content-center">
-                <div class="col text-center"> 
-                    <h1 class="letra-resultado">Título</h1>
-                    <img class="imagen-nota" src="img/fondo.png">
-                </div>
-            </div>
-            <div class="row letra-resumen">
-                <p>
-                    Do something pretty while you can. Don’t fall asleep. Y es necesario desgranar los lugares comunes, todo no es tan único, esa es, por enésima vez, la lección del día.
-                </p>
-            </div>
+
+
+        <div id="resultados">
         </div>
 
-        <br>
 
-        <div class="container resultado">
-            <div class="row  justify-content-center">
-                <div class="col text-center"> 
-                    <h1 class="letra-resultado">Título</h1>
-                    <img class="imagen-nota" src="img/prueba.jpg">
-                </div>
-            </div>
-            <div class="row letra-resumen">
-                <p>
-                    Do something pretty while you can. Don’t fall asleep. Y es necesario desgranar los lugares comunes, todo no es tan único, esa es, por enésima vez, la lección del día.
-                </p>
-            </div>
-        </div>
 
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
-        <h1 class="white">HOLA</h1>
+        
     </div>
 
 
@@ -160,7 +82,17 @@
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-
+    <script type="text/javascript" src="./api/getApi.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("form").keypress(function(e) {
+                if (e.which == 13) {
+                    enviarDatos();
+                    return false;
+                }
+            });
+        });
+        </script>
 </body>
 
 </head>
