@@ -1,3 +1,5 @@
+
+
 from logging import log
 from operator import methodcaller
 from flask import Flask, request, jsonify
@@ -25,9 +27,9 @@ orden="" #int {0: Relevancia, 1: Autor , 2:Fecha}
 @cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
 def consultar():
     datos= request.get_json(force=True, cache=True) #Obtenemos el JSON que envía el FrontEnd
-    global consulta
+    global consulta, orden
     consulta= datos["consulta"]
-    print(consulta)
+    orden= datos["orden"]
     headers = {'Content-Type': 'text/plain'}
     return make_response("Consulta hecha", 200, headers)
 
@@ -35,7 +37,7 @@ def consultar():
 @cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
 def algoritmo():
     data= abrirJSON()
-    return motor(consulta, data)
+    return motor(consulta, data, orden)
 
 
 
