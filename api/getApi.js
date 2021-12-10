@@ -5,11 +5,14 @@ var noticias=[]
 
 //Envía la consulta al servidor
 function enviarDatos(){
+    div_resultado.innerHTML="";
     let div_formulario= document.querySelector("#formulario"); //JQuery
     let consulta_var= div_formulario.consulta.value
     let orden_var= div_formulario.orden.value
+    postearDatos(consulta_var, orden_var);
     //Funciones promesa 
     //Fectch || ajax
+    /*
     fetch('http://192.168.100.2:5000/consulta',
         {
             method:"POST",
@@ -21,24 +24,66 @@ function enviarDatos(){
             ),
             headers:{
                 'Content-Type': 'application/json'}
-        }
-    ).then(data=>res=> res.json())
+
+    ).then(function(){
+        obtener_datos();
+    })
     .catch(error=> console.error('Error: ', error))
     .then(response => console.log('Success: ',response));
+            }*/
+
+    
+}
+
+function postearDatos(consulta_var, orden_var){
+    const http= new XMLHttpRequest();
+
+    http.open("POST", 'http://192.168.100.2:5000/consulta');
+    http.setRequestHeader("Content-Type","application/json")
+    http.onreadystatechange=function(){
+        if(this.readyState==4 && this.status==200){
+            console.log(this.responseText);
+            obtener_datos();
+        }
+    }
+    http.send(JSON.stringify({
+        consulta: consulta_var,
+        orden: orden_var
+    }));
 }
 
 
 //Obtenemos las fichas técnicas del servidor
-fetch('http://192.168.100.2:5000/',
-    {
-        method: "GET",
 
-    })
-    .then(data =>data.json())   
-	.then(data => {
-		listadoNoticia(data); //Se cargan visualmente las noticias en el Front-End
-});
+function obtener_datos(){
+    const http= new XMLHttpRequest();
 
+    http.open("GET", 'http://192.168.100.2:5000/resultados');
+    http.setRequestHeader("Content-Type","application/json")
+    http.onreadystatechange=function(){
+        if(this.readyState==4 && this.status==200){
+            var resultado= JSON.parse(this.responseText);
+            listadoNoticia(resultado);
+        }
+    }
+    http.send();
+}
+
+
+
+/*function obtener_datos(){
+    fetch('http://192.168.100.2:5000/resultados',
+        {
+            method: "GET",
+    
+        })
+        .then(data =>data.json())   
+        .then(data => {
+            console.log("data:")
+            console.log(data);
+            listadoNoticia(data); //Se cargan visualmente las noticias en el Front-End
+    });}
+*/
 
 //Crea un apartado para cada noticia del documento de fichas técnicas
 function listadoNoticia(noticia){
