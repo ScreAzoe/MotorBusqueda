@@ -67,7 +67,7 @@ def obtenerImagen():
         link.append(i['href']) #Se agrega el link a lista
     link=pd.unique(link) #Elimine elementos repetidos. 
 
-    noticia={"titulo":"","resumen":"", "fecha":"", "autor":"","nota":"", "gaceta":"", "img":"","ref":""} #El modelo de la Ficha Técnica de las Notas.
+    noticia={"titulo":"","resumen":"", "fecha":"", "autor":"","nota":"", "img":"","ref":"","gaceta":""} #El modelo de la Ficha Técnica de las Notas.
     documents = [] #Almacena todas la fichas técnicas
     exp_gaceta=re.compile('https://www.gaceta.unam.mx/tag/g[0-9]+') #Expresión regular par aobtener el número de gaceta
     for i in link:
@@ -114,6 +114,7 @@ def obtenerImagen():
                 documents.append(noticia.copy())
         except:
             pass
+    print(documents[10])
     return agregarDocumento(eliminarDuplicado(agregarLista(documents)))
 
 if __name__ == '__main__':
